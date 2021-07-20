@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="article"
+            type="com.example.api.model.entity.Article" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{itemClickListener}"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/profile_pic"
+            app:imageFromUrl="@{article.author.image}"
+            app:imageRound="@{true}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:someBoolean="@{false}"
+            tools:src="@drawable/smiley_cyrus" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="@{article.author.username}"
+            android:textColor="@color/purple_500"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Ranjeet sci" />
+
+        <ImageView
+            android:id="@+id/iv_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:favoritedImg="@{article.favorited}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_outline_favorite_border_24" />
+
+        <TextView
+            android:id="@+id/tv_feed_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:text="@{article.updatedAt}"
+            android:textColor="@color/light_grey"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            tools:text="July 11 , 2020" />
+
+        <TextView
+            android:id="@+id/tv_feed_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@{article.title}"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"
+            tools:text="This is a title" />
+
+
+        <TextView
+            android:id="@+id/tv_feed_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:maxLines="2"
+            android:text="@{article.body}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_feed_title"
+            tools:text="This is a description" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_feed_desc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
